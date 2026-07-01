@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design system globals ────────────────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-surface text-ink font-body antialiased;
+  font-feature-settings: 'cv11', 'ss01';
+}
+
+/* Typography baseline */
+h1, h2, h3, h4 {
+  @apply font-heading text-ink-deep;
+  text-wrap: balance;
+  letter-spacing: -0.025em;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Selection */
+::selection {
+  background-color: theme('colors.primary.200');
+  color: theme('colors.ink.deep');
+}
+
+/* Focus ring — single consistent style site-wide */
+:focus-visible {
+  outline: 2px solid theme('colors.primary.DEFAULT');
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─── Scroll reveal ────────────────────────────────────────────────────────── */
+/*
+ * Content is visible by default (opacity: 1, no transform), so the page
+ * always renders correctly with or without JS. The animation is additive:
+ * .reveal starts visible, JS adds .in-view which does nothing extra; in
+ * reduced-motion: no-preference mode we flip the initial state to hidden and
+ * the in-view class restores it.
+ *
+ * CRITICAL: never put .reveal on the same node whose className changes due to
+ * component state (e.g. accordion open/close). React reconciliation rewrites
+ * className on state changes, wiping the imperatively-added .in-view class.
+ * Pattern: outer wrapper = reveal only, inner element = stateful styles.
+ * See FAQ.jsx and Services.jsx for the corrected double-div pattern.
+ */
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.in-view {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Stagger delays — used in conjunction with .reveal */
+.stagger-1 { transition-delay: 0.06s; }
+.stagger-2 { transition-delay: 0.12s; }
+.stagger-3 { transition-delay: 0.18s; }
+.stagger-4 { transition-delay: 0.24s; }
+.stagger-5 { transition-delay: 0.30s; }
+.stagger-6 { transition-delay: 0.36s; }
+
+/* ─── Reduced motion ───────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Utilities ────────────────────────────────────────────────────────────── */
+
+.parallax-shape {
+  will-change: transform;
+}
+
+/* Gallery scrollbar suppression — Firefox */
+.gallery-track {
+  scrollbar-width: none;
+}
