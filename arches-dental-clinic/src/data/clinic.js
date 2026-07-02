@@ -5,7 +5,7 @@ export const clinic = {
   emergencyPhone: '0962 089 2497',
   emergencyPhoneHref: 'tel:+639620892497',
   email: 'r.archesdental@gmail.com',
-  address: 'Punta Guanzon St, Kabankalan City, 6111 Negros Occidental',
+  address: 'Arches Dental Clinic, Punta Guanzon St, Kabankalan City, 6111 Negros Occidental',
   mapsEmbedSrc:
     'https://www.google.com/maps?q=Punta+Guanzon+St,+Kabankalan+City,+6111+Negros+Occidental&output=embed',
   mapsDirectionsHref:
