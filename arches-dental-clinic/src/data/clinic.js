@@ -39,7 +39,7 @@ export const services = [
     id: 'orthodontics',
     name: 'Orthodontics',
     description:
-      'Braces and clear aligner options for kids, teens, and adults — straighter teeth, fitted to your life.',
+      'Braces for kids, teens, and adults — straighter teeth, fitted to your life.',
     icon: 'AlignCenter',
   },
   {
