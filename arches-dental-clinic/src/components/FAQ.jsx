@@ -7,8 +7,8 @@ const faqs = [
     a: 'To improve efficiency while reducing unused or delayed appointment slots, we have transitioned to a FIRST-COME FIRST-SERVED approach. This ensures faster service for everyone and minimizes unnecessary waiting and scheduling gaps.',
   },
   {
-    q: 'What insurance plans do you accept?',
-    a: 'We work with most major dental insurance providers. Give us a call and our front desk team will help confirm your coverage before your visit.',
+    q: 'What should I expect during my first visit?',
+    a: 'Your first visit typically includes a dental examination, X-rays if needed, and a discussion of your oral health and treatment options.',
   },
   {
     q: 'How often should I come in for a cleaning?',
