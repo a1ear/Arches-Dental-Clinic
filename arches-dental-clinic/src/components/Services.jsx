@@ -8,15 +8,21 @@ const icons = { Sparkles, AlignCenter, Stethoscope }
 const details = {
   'general-dentistry': {
     points: [
-      'Comprehensive exams & digital X-rays',
+      'Tooth Restoration',
       'Professional cleanings & fluoride treatments',
-      'Cavity fillings using tooth-colored composites',
-      'Gum health monitoring & periodontal care',
+      'Cavity fillings',
+      'Fixed Bridge',
+      'Denture',
+      'Tooth Crown',
+      'Teeth Whitening',
+      'Root Canal Treatment',
+      'Pits and Fissure Sealant',
     ],
   },
   orthodontics: {
     points: [
       'Traditional metal & ceramic braces',
+      'Clear aligner therapy for teens & adults',
       'Early orthodontic evaluation for children',
       'Retainers & post-treatment maintenance',
     ],
@@ -26,10 +32,10 @@ const details = {
       'Simple & surgical tooth extractions',
       'Dental implant placement',
       'Wisdom teeth removal',
+      'Others',
     ],
   },
 }
-
 export default function Services() {
   const [openId, setOpenId] = useState(null)
 
