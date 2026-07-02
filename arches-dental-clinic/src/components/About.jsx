@@ -28,7 +28,7 @@ export default function About() {
           </div>
           {/* Floating stat badge */}
           <div className="absolute -bottom-6 -right-1 sm:-right-1 bg-white rounded-card shadow-lift p-5 max-w-[170px] border border-neutral-100">
-            <p className="font-heading font-bold text-3xl text-primary-500 leading-none mb-1">3+</p>
+            <p className="font-heading font-bold text-3xl text-primary-500 leading-none mb-1">4+</p>
             <p className="text-sm text-ink-soft font-medium leading-snug">years caring for local smiles</p>
           </div>
           <ArchSwoop
@@ -49,7 +49,7 @@ export default function About() {
             <span className="text-primary-500">you</span>
           </h2>
           <p className="reveal stagger-2 text-ink-soft leading-relaxed mb-9 max-w-[52ch]">
-            For over fifteen years, Arches Dental Clinic has welcomed patients of every age into a
+            For over four years, Arches Dental Clinic has welcomed patients of every age into a
             warm, modern space where every visit feels personal. Our team blends genuine care with
             advanced technology, so you always know exactly what to expect — and never dread the chair.
           </p>
