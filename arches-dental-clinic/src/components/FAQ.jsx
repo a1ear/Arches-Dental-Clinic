@@ -4,7 +4,7 @@ import { ChevronDown } from 'lucide-react'
 const faqs = [
   {
     q: 'Do I need to book an appointment in advance?',
-    a: 'Walk-ins are welcome during business hours, though calling ahead helps us make sure a chair is ready for you right away and reduces your wait time.',
+    a: 'To improve efficiency while reducing unused or delayed appointment slots, we have transitioned to a FIRST-COME FIRST-SERVED approach. This ensures faster service for everyone and minimizes unnecessary waiting and scheduling gaps.',
   },
   {
     q: 'What insurance plans do you accept?',
