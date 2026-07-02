@@ -43,8 +43,8 @@ export default function Hero() {
           </h1>
 
           <p className="reveal stagger-2 text-lg text-ink-soft max-w-[42ch] mx-auto lg:mx-0 mb-9 leading-relaxed">
-            {clinic.name} provides modern, compassionate dental care for patients of all ages using
-            advanced technology in a comfortable environment.
+            {clinic.name} provides compassionate dental care for patients of all ages using
+            modern technology in a comfortable environment.
           </p>
 
           <div className="reveal stagger-3 flex flex-col sm:flex-row items-center gap-3.5 justify-center lg:justify-start">
