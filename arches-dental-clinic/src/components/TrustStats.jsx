@@ -2,7 +2,7 @@ import { Users, Award, Cpu, HeartHandshake } from 'lucide-react'
 
 const stats = [
   { icon: Users, value: '2,000+', label: 'Happy Patients' },
-  { icon: Award, value: '3+', label: 'Years Experience' },
+  { icon: Award, value: '4+', label: 'Years Experience' },
   { icon: Cpu, value: 'Modern', label: 'Equipment' },
   { icon: HeartHandshake, value: 'Friendly', label: 'Professionals' },
 ]
