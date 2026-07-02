@@ -17,7 +17,6 @@ const details = {
   orthodontics: {
     points: [
       'Traditional metal & ceramic braces',
-      'Clear aligner therapy for teens & adults',
       'Early orthodontic evaluation for children',
       'Retainers & post-treatment maintenance',
     ],
@@ -27,7 +26,6 @@ const details = {
       'Simple & surgical tooth extractions',
       'Dental implant placement',
       'Wisdom teeth removal',
-      'Sedation options for a calm experience',
     ],
   },
 }
