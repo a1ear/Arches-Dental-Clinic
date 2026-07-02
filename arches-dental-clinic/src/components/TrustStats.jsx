@@ -1,8 +1,8 @@
 import { Users, Award, Cpu, HeartHandshake } from 'lucide-react'
 
 const stats = [
-  { icon: Users, value: '5,000+', label: 'Happy Patients' },
-  { icon: Award, value: '15+', label: 'Years Experience' },
+  { icon: Users, value: '2,000+', label: 'Happy Patients' },
+  { icon: Award, value: '3+', label: 'Years Experience' },
   { icon: Cpu, value: 'Modern', label: 'Equipment' },
   { icon: HeartHandshake, value: 'Friendly', label: 'Professionals' },
 ]
