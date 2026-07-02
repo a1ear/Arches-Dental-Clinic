@@ -7,7 +7,7 @@ export const clinic = {
   email: 'r.archesdental@gmail.com',
   address: 'Arches Dental Clinic, Punta Guanzon St, Kabankalan City, 6111 Negros Occidental',
   mapsEmbedSrc:
-    'https://www.google.com/maps?q=Punta+Guanzon+St,+Kabankalan+City,+6111+Negros+Occidental&output=embed',
+    'https://www.google.com/maps?q=Arches+Dental+Clinic,+Punta+Guanzon+St,+Kabankalan+City,+6111+Negros+Occidental&output=embed',
   mapsDirectionsHref:
     'https://www.google.com/maps/dir/?api=1&destination=Punta+Guanzon+St,+Kabankalan+City,+6111+Negros+Occidental',
   hours: [
