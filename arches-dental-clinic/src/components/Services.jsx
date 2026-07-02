@@ -9,7 +9,7 @@ const details = {
   'general-dentistry': {
     points: [
       'Tooth Restoration',
-      'Professional cleanings & fluoride treatments',
+      'Professional cleaning & fluoride treatments',
       'Cavity fillings',
       'Fixed Bridge',
       'Denture',
