@@ -22,7 +22,6 @@ const details = {
   orthodontics: {
     points: [
       'Traditional metal & ceramic braces',
-      'Clear aligner therapy for teens & adults',
       'Early orthodontic evaluation for children',
       'Retainers & post-treatment maintenance',
     ],
