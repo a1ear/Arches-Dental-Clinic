@@ -28,7 +28,7 @@ const details = {
   },
   'oral-surgery': {
     points: [
-      'Simple & surgical tooth extractions',
+      'Simple extractions',
       'Dental implant placement',
       'Wisdom teeth removal',
       'Others',
