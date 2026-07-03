@@ -31,7 +31,6 @@ const details = {
       'Simple & surgical tooth extractions',
       'Dental implant placement',
       'Wisdom teeth removal',
-      'Implants',
       'Others',
     ],
   },
