@@ -9,44 +9,47 @@
     <title>Arches Dental Clinic | Modern, Compassionate Dental Care</title>
     <meta
       name="description"
-      content="Arches Dental Clinic offers general dentistry, orthodontics, and oral surgery for patients of all ages. Modern technology, gentle care, and a warm, comfortable clinic. Call us today."
+      content="Arches Dental Clinic offers general dentistry, orthodontics, and oral surgery for patients of all ages. Modern technology, gentle care, and a warm, comfortable clinic in Kabankalan City. Call us today."
     />
-    <meta name="keywords" content="dentist, dental clinic, general dentistry, orthodontics, oral surgery, family dentist, Arches Dental Clinic" />
+    <meta name="keywords" content="dentist, dental clinic, general dentistry, orthodontics, oral surgery, family dentist, Arches Dental Clinic, Kabankalan City dentist, Negros Occidental dentist" />
+    <meta name="author" content="Arches Dental Clinic" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://www.archesdental.com/" />
+    <link rel="canonical" href="https://archesdentalclinic.online/" />
 
-    <!-- Open Graph -->
+    <!-- Open Graph (Facebook / LinkedIn / WhatsApp previews) -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Arches Dental Clinic" />
     <meta property="og:title" content="Arches Dental Clinic | Modern, Compassionate Dental Care" />
     <meta
       property="og:description"
-      content="Modern, compassionate dental care for patients of all ages using advanced technology in a comfortable environment."
+      content="Modern, compassionate dental care for patients of all ages using advanced technology in a comfortable environment. Located in Kabankalan City, Negros Occidental."
     />
-    <meta property="og:url" content="https://www.archesdental.com/" />
-    <meta property="og:image" content="https://www.archesdental.com/og-image.jpg" />
+    <meta property="og:url" content="https://archesdentalclinic.online/" />
+    <meta property="og:image" content="https://archesdentalclinic.online/og-image.jpg" />
+    <meta property="og:locale" content="en_PH" />
 
-    <!-- Twitter -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Arches Dental Clinic | Modern, Compassionate Dental Care" />
     <meta
       name="twitter:description"
       content="Modern, compassionate dental care for patients of all ages using advanced technology in a comfortable environment."
     />
-    <meta name="twitter:image" content="https://www.archesdental.com/og-image.jpg" />
+    <meta name="twitter:image" content="https://archesdentalclinic.online/og-image.jpg" />
 
     <!-- Theme + Performance -->
     <meta name="theme-color" content="#D88918" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Local Business structured data -->
+    <!-- Local Business Structured Data (JSON-LD) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Dentist",
         "name": "Arches Dental Clinic",
-        "image": "https://www.archesdental.com/og-image.jpg",
+        "url": "https://archesdentalclinic.online/",
+        "image": "https://archesdentalclinic.online/og-image.jpg",
         "telephone": "+63-962-089-2497",
         "email": "hello@archesdental.com",
         "address": {
@@ -57,19 +60,33 @@
           "postalCode": "6111",
           "addressCountry": "PH"
         },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "9.9896",
+          "longitude": "122.8148"
+        },
         "openingHoursSpecification": [
-          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "09:30", "closes": "17:00" }
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+            "opens": "09:30",
+            "closes": "17:00"
+          }
         ],
-        "medicalSpecialty": ["General Dentistry", "Orthodontics", "Oral Surgery"]
+        "medicalSpecialty": ["General Dentistry", "Orthodontics", "Oral Surgery"],
+        "priceRange": "₱₱",
+        "sameAs": []
       }
-
-      document.addEventListener('contextmenu', function(event) {
-    event.preventDefault();
-});
     </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <!-- Disable right-click context menu -->
+    <script>
+      document.addEventListener('contextmenu', function (event) {
+        event.preventDefault();
+      });
+    </script>
   </body>
 </html>
