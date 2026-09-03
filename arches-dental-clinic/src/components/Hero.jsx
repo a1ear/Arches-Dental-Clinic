@@ -43,15 +43,21 @@ export default function Hero() {
           </h1>
 
           <p className="reveal stagger-2 text-lg text-ink-soft max-w-[42ch] mx-auto lg:mx-0 mb-9 leading-relaxed">
-            {clinic.name} provides compassionate dental care for patients of all ages using
-            modern technology in a comfortable environment.
+            {clinic.name} takes walk-ins — no appointment needed — with modern technology
+            and compassionate care for every age.
           </p>
 
           <div className="reveal stagger-3 flex flex-col sm:flex-row items-center gap-3.5 justify-center lg:justify-start">
-
+            <a
+              href={clinic.phoneHref}
+              className="group inline-flex items-center justify-center gap-2 bg-primary-700 hover:bg-primary-800 text-white font-heading font-semibold px-7 py-3.5 rounded-full shadow-soft hover:shadow-lift transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] w-full sm:w-auto"
+            >
+              <Phone className="h-4 w-4" strokeWidth={2.5} />
+              Call Now
+            </a>
             <a
               href="#services"
-              className="group inline-flex items-center justify-center gap-2 bg-white text-ink-deep font-heading font-semibold px-7 py-3.5 rounded-full border-2 border-neutral-200 hover:border-primary-200 hover:text-primary-700 hover:bg-primary-50/50 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] w-full sm:w-auto"
+              className="group inline-flex items-center justify-center gap-2 bg-white text-ink-deep font-heading font-semibold px-7 py-3.5 rounded-full border-2 border-neutral-200 hover:border-primary-200 hover:text-primary-700 hover:bg-primary-50/50 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] active:scale-[0.97] w-full sm:w-auto"
             >
               View Services
               <ArrowRight className="h-4 w-4 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1" />

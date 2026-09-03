@@ -94,8 +94,3 @@ p {
 .parallax-shape {
   will-change: transform;
 }
-
-/* Gallery scrollbar suppression — Firefox */
-.gallery-track {
-  scrollbar-width: none;
-}
