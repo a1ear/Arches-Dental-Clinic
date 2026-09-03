@@ -1,4 +1,5 @@
-import { useRef, useState, useEffect, useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+import useEmblaCarousel from 'embla-carousel-react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import ImageAssets from './ImageAssets'
 import ReceptionImage from '../assets/images/reception.jpg'
@@ -14,38 +15,31 @@ const photos = [
 ]
 
 export default function Gallery() {
-  const trackRef = useRef(null)
-  const [activeIndex, setActiveIndex] = useState(0)
+  const [emblaRef, emblaApi] = useEmblaCarousel({ align: 'center', containScroll: 'trimSnaps' })
+  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [prevDisabled, setPrevDisabled] = useState(true)
+  const [nextDisabled, setNextDisabled] = useState(true)
 
-  // Sync active dot with scroll position using IntersectionObserver on each slide
+  const onSelect = useCallback((api) => {
+    setSelectedIndex(api.selectedScrollSnap())
+    setPrevDisabled(!api.canScrollPrev())
+    setNextDisabled(!api.canScrollNext())
+  }, [])
+
   useEffect(() => {
-    const track = trackRef.current
-    if (!track) return
+    if (!emblaApi) return
+    onSelect(emblaApi)
+    emblaApi.on('select', onSelect)
+    emblaApi.on('reInit', onSelect)
+    return () => {
+      emblaApi.off('select', onSelect)
+      emblaApi.off('reInit', onSelect)
+    }
+  }, [emblaApi, onSelect])
 
-    const slides = Array.from(track.querySelectorAll('[data-slide]'))
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-            setActiveIndex(Number(entry.target.dataset.slide))
-          }
-        })
-      },
-      { root: track, threshold: 0.5 }
-    )
-    slides.forEach((s) => observer.observe(s))
-    return () => observer.disconnect()
-  }, [])
-
-  const scrollTo = useCallback((index) => {
-    const track = trackRef.current
-    if (!track) return
-    const slide = track.querySelector(`[data-slide="${index}"]`)
-    slide?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
-  }, [])
-
-  const prev = () => scrollTo(Math.max(0, activeIndex - 1))
-  const next = () => scrollTo(Math.min(photos.length - 1, activeIndex + 1))
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi])
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi])
+  const scrollTo = useCallback((index) => emblaApi?.scrollTo(index), [emblaApi])
 
   return (
     <section className="relative py-24 md:py-32 bg-surface-alt overflow-hidden">
@@ -65,44 +59,37 @@ export default function Gallery() {
 
         {/* Carousel */}
         <div className="reveal relative">
-          {/* Scroll track — CSS snap keeps layout in GPU compositor */}
-          <div
-            ref={trackRef}
-            className="gallery-track flex gap-4 md:gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 -mx-5 px-5 md:-mx-8 md:px-8"
-            style={{
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none',
-              WebkitOverflowScrolling: 'touch',
-            }}
-          >
-            {photos.map((photo, i) => (
-              <div
-                key={photo.label}
-                data-slide={i}
-                className="snap-center shrink-0 w-[82vw] sm:w-[60vw] md:w-[calc(50%-10px)] lg:w-[calc(40%-10px)] aspect-[4/3] rounded-card overflow-hidden shadow-card group"
-              >
-                <ImageAssets
-                  src={photo.src}
-                  alt={photo.alt}
-                  label={photo.label}
-                  className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
-                />
-              </div>
-            ))}
+          {/* Embla viewport — overflow is clipped here, the container inside is what Embla translates */}
+          <div className="overflow-hidden -mx-5 px-5 md:-mx-8 md:px-8" ref={emblaRef}>
+            <div className="flex gap-4 md:gap-5">
+              {photos.map((photo) => (
+                <div
+                  key={photo.label}
+                  className="shrink-0 w-[82vw] sm:w-[60vw] md:w-[calc(50%-10px)] lg:w-[calc(40%-10px)] aspect-[4/3] rounded-card overflow-hidden shadow-card group"
+                >
+                  <ImageAssets
+                    src={photo.src}
+                    alt={photo.alt}
+                    label={photo.label}
+                    className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Arrow buttons */}
           <button
-            onClick={prev}
-            disabled={activeIndex === 0}
+            onClick={scrollPrev}
+            disabled={prevDisabled}
             aria-label="Previous photo"
             className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 items-center justify-center h-11 w-11 rounded-full bg-white shadow-soft border border-neutral-100 text-ink-deep hover:text-primary-600 hover:shadow-card disabled:opacity-30 disabled:pointer-events-none transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
           <button
-            onClick={next}
-            disabled={activeIndex === photos.length - 1}
+            onClick={scrollNext}
+            disabled={nextDisabled}
             aria-label="Next photo"
             className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 items-center justify-center h-11 w-11 rounded-full bg-white shadow-soft border border-neutral-100 text-ink-deep hover:text-primary-600 hover:shadow-card disabled:opacity-30 disabled:pointer-events-none transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]"
           >
@@ -116,11 +103,11 @@ export default function Gallery() {
             <button
               key={i}
               role="tab"
-              aria-selected={i === activeIndex}
+              aria-selected={i === selectedIndex}
               aria-label={`Go to photo ${i + 1}: ${photo.label}`}
               onClick={() => scrollTo(i)}
               className={`rounded-full transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                i === activeIndex
+                i === selectedIndex
                   ? 'w-6 h-2.5 bg-primary-600'
                   : 'w-2.5 h-2.5 bg-neutral-300 hover:bg-neutral-400'
               }`}
@@ -128,9 +115,6 @@ export default function Gallery() {
           ))}
         </div>
       </div>
-
-      {/* Hide scrollbar cross-browser via global rule scoped to this component */}
-      <style>{`.gallery-track::-webkit-scrollbar { display: none; }`}</style>
     </section>
   )
 }

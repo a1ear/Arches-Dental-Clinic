@@ -50,7 +50,7 @@ export default function ClinicInfo() {
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <a
                 href={clinic.phoneHref}
-                className="flex-1 inline-flex items-center justify-center gap-2 bg-primary-700 hover:bg-primary-800 text-white font-heading font-semibold px-6 py-4 rounded-full shadow-lift transition-all duration-300 hover:-translate-y-1"
+                className="flex-1 inline-flex items-center justify-center gap-2 bg-primary-700 hover:bg-primary-800 text-white font-heading font-semibold px-6 py-4 rounded-full shadow-lift transition-all duration-300 hover:-translate-y-1 active:translate-y-0 active:scale-[0.97]"
               >
                 <Phone className="h-5 w-5" strokeWidth={2.5} />
                 Call Now
@@ -59,7 +59,7 @@ export default function ClinicInfo() {
                 href={clinic.mapsDirectionsHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 inline-flex items-center justify-center gap-2 bg-white text-ink-deep font-heading font-semibold px-6 py-4 rounded-full border-2 border-neutral-200 hover:border-primary-300 hover:text-primary-600 transition-all duration-300"
+                className="flex-1 inline-flex items-center justify-center gap-2 bg-white text-ink-deep font-heading font-semibold px-6 py-4 rounded-full border-2 border-neutral-200 hover:border-primary-300 hover:text-primary-600 transition-all duration-300 active:scale-[0.97]"
               >
                 <Navigation className="h-5 w-5" strokeWidth={2.25} />
                 Get Directions

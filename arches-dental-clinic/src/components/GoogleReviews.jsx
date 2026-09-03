@@ -44,7 +44,7 @@ export default function GoogleReviews() {
           {reviews.map((review, index) => (
             <figure
               key={index}
-              className="card-lift relative bg-surface-warm rounded-4xl p-8 border border-neutral-100 flex flex-col"
+              className="relative bg-surface-warm rounded-card border border-neutral-100 shadow-card hover:shadow-lift hover:-translate-y-1.5 transition-all duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] p-8 flex flex-col"
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex gap-1">
@@ -90,7 +90,7 @@ export default function GoogleReviews() {
             href={clinic.googleReviewsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-white text-ink-deep font-heading font-semibold px-7 py-3.5 rounded-full border-2 border-neutral-200 hover:border-primary-300 hover:text-primary-600 transition-all duration-300"
+            className="inline-flex items-center gap-2 bg-white text-ink-deep font-heading font-semibold px-7 py-3.5 rounded-full border-2 border-neutral-200 hover:border-primary-300 hover:text-primary-600 active:scale-[0.97] transition-all duration-300"
           >
             <GoogleGlyph className="h-4 w-4" />
             View All Reviews

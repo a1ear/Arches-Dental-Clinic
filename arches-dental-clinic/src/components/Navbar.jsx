@@ -51,7 +51,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center">
           <a
             href={clinic.phoneHref}
-            className="inline-flex items-center gap-2 bg-primary-700 hover:bg-primary-800 text-white font-heading font-semibold text-sm px-5 py-2.5 rounded-full shadow-soft hover:shadow-lift transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 active:translate-y-0"
+            className="inline-flex items-center gap-2 bg-primary-700 hover:bg-primary-800 text-white font-heading font-semibold text-sm px-5 py-2.5 rounded-full shadow-soft hover:shadow-lift transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97]"
           >
             <Phone className="h-4 w-4" strokeWidth={2.5} />
             Call Now
@@ -70,11 +70,11 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-          open ? 'max-h-96 opacity-100 mt-3' : 'max-h-0 opacity-0'
+        className={`md:hidden grid transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          open ? 'grid-rows-[1fr] opacity-100 mt-3' : 'grid-rows-[0fr] opacity-0'
         }`}
       >
-        <ul className="mx-4 bg-white rounded-card shadow-card border border-neutral-100 p-3 flex flex-col">
+        <ul className="mx-4 overflow-hidden bg-white rounded-card shadow-card border border-neutral-100 p-3 flex flex-col">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a

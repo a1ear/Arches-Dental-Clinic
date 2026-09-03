@@ -27,7 +27,7 @@ export default function FinalCTA() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5">
             <a
               href={clinic.phoneHref}
-              className="inline-flex items-center justify-center gap-2 bg-white text-primary-700 font-heading font-semibold px-8 py-4 rounded-full shadow-xl hover:shadow-2xl hover:-translate-y-1 active:translate-y-0 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-2 bg-white text-primary-700 font-heading font-semibold px-8 py-4 rounded-full shadow-xl hover:shadow-2xl hover:-translate-y-1 active:translate-y-0 active:scale-[0.97] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] w-full sm:w-auto"
             >
               <Phone className="h-5 w-5" strokeWidth={2.5} />
               Call Now
@@ -36,7 +36,7 @@ export default function FinalCTA() {
               href={clinic.mapsDirectionsHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-white/12 hover:bg-white/22 text-white font-heading font-semibold px-8 py-4 rounded-full border border-white/30 hover:border-white/50 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-2 bg-white/12 hover:bg-white/22 text-white font-heading font-semibold px-8 py-4 rounded-full border border-white/30 hover:border-white/50 active:scale-[0.97] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] w-full sm:w-auto"
             >
               <Navigation className="h-5 w-5" />
               Get Directions
