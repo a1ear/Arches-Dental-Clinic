@@ -29,7 +29,7 @@ const faqs = [
 ]
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState(0)
+  const [openIndex, setOpenIndex] = useState(-1)
 
   return (
     <section id="faq" className="relative py-24 md:py-32 bg-surface-alt">

@@ -31,7 +31,7 @@ export function LocaleProvider({ children }) {
     if (LOCALES.some((l) => l.code === code)) setLocaleState(code)
   }, [])
 
-  // t('hero.badge') — falls back to English, then to the key itself, so a
+  // t('hero.title1') — falls back to English, then to the key itself, so a
   // missing string is never a blank space on the page.
   const t = useCallback(
     (path) => {
