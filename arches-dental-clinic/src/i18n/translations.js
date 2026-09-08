@@ -35,9 +35,7 @@ export const translations = {
       viewServices: 'View Services',
       directions: 'Get Directions',
     },
-    hero: {
-      badge: 'Now welcoming new patients',
-      title1: 'Healthy Smiles',
+    hero: {      title1: 'Healthy Smiles',
       title2: 'Begin Here',
       body: 'takes walk-ins — no appointment needed — with modern technology and compassionate care for every age.',
     },
@@ -61,9 +59,7 @@ export const translations = {
       viewServices: 'Tingnan ang Serbisyo',
       directions: 'Kunin ang Direksyon',
     },
-    hero: {
-      badge: 'Tumatanggap na ng bagong pasyente',
-      title1: 'Malusog na Ngiti',
+    hero: {      title1: 'Malusog na Ngiti',
       title2: 'Nagsisimula Dito',
       body: 'ay tumatanggap ng walk-in — hindi kailangan ng appointment — may makabagong teknolohiya at maalagang pangangalaga para sa lahat ng edad.',
     },
@@ -87,9 +83,7 @@ export const translations = {
       viewServices: 'Tan-awa ang Serbisyo',
       directions: 'Kuhaa ang Direksyon',
     },
-    hero: {
-      badge: 'Nagabaton na sang bag-o nga pasyente',
-      title1: 'Mapagros nga Yuhum',
+    hero: {      title1: 'Mapagros nga Yuhum',
       title2: 'Nagasugod Diri',
       body: 'nagabaton sang walk-in — indi kinahanglan sang appointment — may moderno nga teknolohiya kag maalwan nga pag-atipan para sa tanan nga edad.',
     },

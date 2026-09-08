@@ -42,7 +42,7 @@ export default function Hero() {
           alt=""
           width="2000"
           height="1500"
-          fetchpriority="high"
+          fetchPriority="high"
           decoding="async"
           className="absolute inset-0 h-full w-full object-cover object-[60%_30%]"
         />
@@ -58,10 +58,6 @@ export default function Hero() {
         <div className="grid min-h-[100svh] grid-cols-1 gap-x-6 gap-y-10 pb-14 pt-32 md:grid-cols-12 md:grid-rows-4 md:pb-16 md:pt-44">
           {/* Headline — top left */}
           <div className="md:col-span-6 md:col-start-1 md:row-span-2 md:row-start-1 lg:col-span-5">
-            <span className="hero__fade hero__fade--1 mb-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-sm font-semibold text-white backdrop-blur-sm">
-              <span className="h-1.5 w-1.5 rounded-full bg-secondary-300" aria-hidden="true" />
-              {t('hero.badge')}
-            </span>
 
             <h1 className="font-heading text-[2.75rem] font-bold leading-[1.04] tracking-tight text-white sm:text-6xl lg:text-[4rem]">
               {lines.map((line, li) => (

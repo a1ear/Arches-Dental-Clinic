@@ -15,7 +15,7 @@ const photos = [
 ]
 
 export default function Gallery() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ align: 'center', containScroll: 'trimSnaps' })
+  const [emblaRef, emblaApi] = useEmblaCarousel({ align: 'center', loop: true })
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [prevDisabled, setPrevDisabled] = useState(true)
   const [nextDisabled, setNextDisabled] = useState(true)
