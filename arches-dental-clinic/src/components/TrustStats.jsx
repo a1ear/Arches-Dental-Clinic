@@ -9,7 +9,7 @@ const stats = [
 
 export default function TrustStats() {
   return (
-    <section className="relative -mt-6 pb-4 z-10">
+    <section className="relative pt-16 pb-4 md:pt-20">
       <div className="mx-auto max-w-content px-5 md:px-8">
         <div className="reveal grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-0 bg-white rounded-card shadow-soft border border-neutral-100 p-6 md:p-8 lg:p-10">
           {stats.map((stat, i) => (

@@ -2,10 +2,10 @@ import { useCallback, useEffect, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import ImageAssets from './ImageAssets'
-import ReceptionImage from '../assets/images/reception.jpg'
-import TreatmentRoomImage from '../assets/images/treatment-room.jpg'
-import DentalEquipmentImage from '../assets/images/dental-equipment.jpg'
-import ClinicExteriorImage from '../assets/images/clinic-exterior.jpg'
+import ReceptionImage from '../assets/images/reception.webp'
+import TreatmentRoomImage from '../assets/images/treatment-room.webp'
+import DentalEquipmentImage from '../assets/images/dental-equipment.webp'
+import ClinicExteriorImage from '../assets/images/clinic-exterior.webp'
 
 const photos = [
   { label: 'Reception Area',    src: ReceptionImage,       alt: 'Welcoming reception area at Arches Dental Clinic' },

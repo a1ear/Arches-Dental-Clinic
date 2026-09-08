@@ -32,7 +32,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0)
 
   return (
-    <section className="relative py-24 md:py-32 bg-surface-alt">
+    <section id="faq" className="relative py-24 md:py-32 bg-surface-alt">
       <div className="mx-auto max-w-content px-5 md:px-8 max-w-3xl">
         <div className="text-center mb-14">
           <span className="reveal inline-block text-primary-600 font-heading font-semibold text-sm tracking-widest uppercase mb-4">

@@ -5,7 +5,7 @@
  */
 export default function ArchSwoop({
   className = '',
-  color = '#D88918',
+  color = '#7A290B',
   strokeWidth = 6,
   flip = false,
   variant = 'wide', // 'wide' | 'tight' | 'underline'
