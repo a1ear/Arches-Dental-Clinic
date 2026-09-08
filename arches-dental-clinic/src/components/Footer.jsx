@@ -1,8 +1,10 @@
 import { Phone, Mail, MapPin } from 'lucide-react'
 import { clinic, navLinks, services } from '../data/clinic'
 import { GoogleGlyph, FacebookGlyph, InstagramGlyph } from './BrandGlyphs'
+import { useLocale } from '../i18n/LocaleContext'
 
 export default function Footer() {
+  const { t } = useLocale()
   const year = new Date().getFullYear()
 
   return (
@@ -14,13 +16,10 @@ export default function Footer() {
             <div className="flex items-center gap-2.5 mb-4">
               <ArchMark className="h-8 w-8" />
               <span className="font-heading font-bold text-lg text-white leading-none">
-                Arches{' '}
-                <span className="text-neutral-300 font-semibold">Dental</span>
+                Arches <span className="text-neutral-300 font-semibold">Dental</span>
               </span>
             </div>
-            <p className="text-sm leading-relaxed text-white/55 mb-6">
-              Modern, compassionate dental care for patients of all ages.
-            </p>
+            <p className="text-sm leading-relaxed text-white/55 mb-6">{t('footer.tagline')}</p>
             <div className="flex gap-2.5">
               <SocialIcon href={clinic.social.facebook} label="Facebook">
                 <FacebookGlyph className="h-4 w-4" />
@@ -28,7 +27,7 @@ export default function Footer() {
               <SocialIcon href={clinic.social.instagram} label="Instagram">
                 <InstagramGlyph className="h-4 w-4" />
               </SocialIcon>
-              <SocialIcon href={clinic.social.google} label="Google Reviews">
+              <SocialIcon href={clinic.social.google} label="Google">
                 <GoogleGlyph className="h-4 w-4" />
               </SocialIcon>
             </div>
@@ -36,7 +35,9 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-heading font-semibold text-white mb-5 text-sm tracking-wide">Quick Links</h4>
+            <h4 className="font-heading font-semibold text-white mb-5 text-sm tracking-wide">
+              {t('footer.quickLinks')}
+            </h4>
             <ul className="space-y-2.5 text-sm">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -44,7 +45,7 @@ export default function Footer() {
                     href={link.href}
                     className="text-white/70 hover:text-primary-400 transition-colors duration-200"
                   >
-                    {link.label}
+                    {t(`nav.${link.href.slice(1)}`)}
                   </a>
                 </li>
               ))}
@@ -53,7 +54,9 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-heading font-semibold text-white mb-5 text-sm tracking-wide">Services</h4>
+            <h4 className="font-heading font-semibold text-white mb-5 text-sm tracking-wide">
+              {t('footer.services')}
+            </h4>
             <ul className="space-y-2.5 text-sm">
               {services.map((s) => (
                 <li key={s.id}>
@@ -61,7 +64,7 @@ export default function Footer() {
                     href="#services"
                     className="text-white/70 hover:text-primary-400 transition-colors duration-200"
                   >
-                    {s.name}
+                    {t(`services.items.${s.id}.name`)}
                   </a>
                 </li>
               ))}
@@ -70,7 +73,9 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-heading font-semibold text-white mb-5 text-sm tracking-wide">Contact</h4>
+            <h4 className="font-heading font-semibold text-white mb-5 text-sm tracking-wide">
+              {t('footer.contact')}
+            </h4>
             <ul className="space-y-3.5 text-sm">
               <li className="flex gap-2.5 text-white/70">
                 <MapPin className="h-4 w-4 mt-0.5 text-primary-400 shrink-0" />
@@ -98,8 +103,8 @@ export default function Footer() {
             <div className="mt-5 pt-5 border-t border-white/10">
               {clinic.hours.map((h) => (
                 <div key={h.day} className="flex justify-between text-xs text-white/55 py-[3px]">
-                  <span>{h.day}</span>
-                  <span>{h.time}</span>
+                  <span>{t(`contact.days.${h.day}`)}</span>
+                  <span>{h.time === 'Closed' ? t('contact.closed') : h.time}</span>
                 </div>
               ))}
             </div>
@@ -107,15 +112,28 @@ export default function Footer() {
         </div>
 
         <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/55">
-          <p>© {year} {clinic.name}. All rights reserved.</p>
+          <p>
+            © {year} {clinic.name}. {t('footer.rights')}
+          </p>
           <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-            <a href="#privacy-policy" className="text-white/70 transition-colors duration-200 hover:text-primary-400">Privacy Policy</a>
-            <a href="#terms-of-service" className="text-white/70 transition-colors duration-200 hover:text-primary-400">Terms of Service</a>
+            <a href="#privacy-policy" className="text-white/70 transition-colors duration-200 hover:text-primary-400">
+              {t('footer.privacy')}
+            </a>
+            <a href="#terms-of-service" className="text-white/70 transition-colors duration-200 hover:text-primary-400">
+              {t('footer.terms')}
+            </a>
             <button
-              onClick={() => { try { localStorage.removeItem('adc-cookie-consent') } catch { /* nothing stored */ } window.location.reload() }}
+              onClick={() => {
+                try {
+                  localStorage.removeItem('adc-cookie-consent')
+                } catch {
+                  /* nothing stored */
+                }
+                window.location.reload()
+              }}
               className="text-white/70 transition-colors duration-200 hover:text-primary-400"
             >
-              Cookie settings
+              {t('footer.cookieSettings')}
             </button>
           </nav>
         </div>

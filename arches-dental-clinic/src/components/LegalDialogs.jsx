@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { X } from 'lucide-react'
 import { legalDocs, LEGAL_UPDATED } from '../data/legal'
+import { useLocale } from '../i18n/LocaleContext'
 
 /*
  * Policy documents as a modal, addressed by URL hash (#privacy-policy,
@@ -8,6 +9,7 @@ import { legalDocs, LEGAL_UPDATED } from '../data/legal'
  * Uses a native <dialog>, which brings focus trapping and Escape with it.
  */
 export default function LegalDialogs() {
+  const { t } = useLocale()
   const [active, setActive] = useState(null)
   const ref = useRef(null)
 
@@ -52,12 +54,12 @@ export default function LegalDialogs() {
                 {active.title}
               </h2>
               <p className="mt-1 text-xs uppercase tracking-wide text-ink-soft">
-                Last updated {LEGAL_UPDATED}
+                {t('legal.updated')} {LEGAL_UPDATED}
               </p>
             </div>
             <button
               onClick={close}
-              aria-label={`Close ${active.title}`}
+              aria-label={t('legal.close').replace('{title}', active.title)}
               className="-mr-2 shrink-0 rounded-xl p-2 text-ink-soft transition-colors duration-200 hover:bg-primary-50 hover:text-primary-700"
             >
               <X className="h-5 w-5" />

@@ -1,10 +1,16 @@
 import { useState } from 'react'
-import { Sparkles, AlignCenter, Stethoscope, ChevronDown } from 'lucide-react'
+import { Sparkles, AlignCenter, Stethoscope, ChevronDown, X } from 'lucide-react'
 import { services } from '../data/clinic'
+import { useLocale } from '../i18n/LocaleContext'
 import ArchSwoop from './ArchSwoop'
 
 const icons = { Sparkles, AlignCenter, Stethoscope }
 
+/*
+ * Procedure names stay in English across all locales — that is how they are
+ * used in Philippine dental practice, and inventing local equivalents would
+ * make them harder to recognise, not easier.
+ */
 const details = {
   'general-dentistry': {
     points: [
@@ -35,7 +41,9 @@ const details = {
     ],
   },
 }
+
 export default function Services() {
+  const { t } = useLocale()
   const [openId, setOpenId] = useState(null)
 
   function handleLearnMore(id) {
@@ -50,20 +58,20 @@ export default function Services() {
       <div className="mx-auto max-w-content px-5 md:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="reveal inline-block text-primary-600 font-heading font-semibold text-sm tracking-widest uppercase mb-4">
-            What We Offer
+            {t('services.eyebrow')}
           </span>
           <h2 className="reveal stagger-1 text-3xl md:text-4xl font-bold mb-4 tracking-tight">
-            Services designed around your smile
+            {t('services.title')}
           </h2>
           <p className="reveal stagger-2 text-ink-soft leading-relaxed max-w-[50ch] mx-auto">
-            From routine checkups to advanced procedures, every treatment is delivered with the same
-            gentle, attentive care.
+            {t('services.body')}
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
           {services.map((service, i) => {
             const Icon = icons[service.icon]
+            const name = t(`services.items.${service.id}.name`)
             return (
               <div key={service.id} className={`reveal stagger-${i + 1}`}>
                 <div className="group relative bg-white rounded-card border border-neutral-100 shadow-card hover:shadow-lift hover:-translate-y-1.5 transition-all duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] p-8 flex flex-col h-full">
@@ -72,13 +80,15 @@ export default function Services() {
                   <span className="flex items-center justify-center h-14 w-14 rounded-2xl bg-primary-50 text-primary-600 mb-6 group-hover:bg-primary-600 group-hover:text-white transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]">
                     <Icon className="h-7 w-7" strokeWidth={1.75} />
                   </span>
-                  <h3 className="text-xl font-bold mb-3 tracking-tight">{service.name}</h3>
-                  <p className="text-ink-soft leading-relaxed mb-6 flex-1 text-[15px]">{service.description}</p>
+                  <h3 className="text-xl font-bold mb-3 tracking-tight">{name}</h3>
+                  <p className="text-ink-soft leading-relaxed mb-6 flex-1 text-[15px]">
+                    {t(`services.items.${service.id}.description`)}
+                  </p>
                   <button
                     onClick={() => handleLearnMore(service.id)}
                     className="inline-flex items-center gap-1.5 text-primary-600 font-heading font-semibold text-sm hover:text-primary-700 transition-all duration-200 self-start group/btn"
                   >
-                    Learn More
+                    {t('cta.learnMore')}
                     <ChevronDown className="h-4 w-4 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/btn:translate-y-0.5" />
                   </button>
                 </div>
@@ -91,10 +101,12 @@ export default function Services() {
         <div className="mt-8 space-y-4">
           {services.map((service) => {
             const isOpen = openId === service.id
+            const name = t(`services.items.${service.id}.name`)
             return (
               <div
                 key={service.id}
                 id={`detail-${service.id}`}
+                inert={!isOpen}
                 className={`grid rounded-card bg-surface-warm border transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                   isOpen
                     ? 'grid-rows-[1fr] opacity-100 border-primary-100'
@@ -103,18 +115,19 @@ export default function Services() {
               >
                 <div className="overflow-hidden">
                   <div className="flex items-center justify-between mb-4 px-7 md:px-9 pt-7">
-                    <h4 className="font-heading font-bold text-base text-ink-deep">{service.name}</h4>
+                    <h4 className="font-heading font-bold text-base text-ink-deep">{name}</h4>
                     <button
                       onClick={() => setOpenId(null)}
-                      className="text-ink-soft hover:text-primary-600 text-sm font-medium transition-colors duration-200 px-2 py-1 rounded-lg hover:bg-primary-50"
-                      aria-label={`Close ${service.name} details`}
+                      className="inline-flex items-center gap-1.5 text-ink-soft hover:text-primary-700 text-sm font-medium transition-colors duration-200 px-2 py-1 rounded-lg hover:bg-primary-50"
+                      aria-label={t('services.closeAria').replace('{name}', name)}
                     >
-                      Close ✕
+                      {t('cta.close')}
+                      <X className="h-4 w-4" />
                     </button>
                   </div>
                   <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2.5 px-7 md:px-9 pb-7">
                     {details[service.id].points.map((point) => (
-                      <li key={point} className="text-ink-soft text-sm flex items-start gap-2.5">
+                      <li key={point} lang="en" className="text-ink-soft text-sm flex items-start gap-2.5">
                         <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary-400 shrink-0" />
                         {point}
                       </li>
