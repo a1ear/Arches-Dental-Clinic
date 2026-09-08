@@ -4,26 +4,37 @@ export default {
   theme: {
     extend: {
       colors: {
+        // ─── Brand ──────────────────────────────────────────────────────────
+        // Anchored on the Arches Dental Clinic logo:
+        //   rust #7A290B  → primary-700  (wordmark, tooth outline, swoosh)
+        //   tan  #BBA173  → secondary-500 ("DENTAL CLINIC", inner tooth accent)
+        // Ramps hold the logo hue (16° / 38°) and taper saturation at the
+        // light end so tints stay warm rather than turning neon.
         primary: {
-          DEFAULT: '#D88918',
-          50: '#FDF6EB',
-          100: '#FBEAD2',
-          200: '#F5D2A0',
-          300: '#EFB96E',
-          400: '#E29F3D',
-          500: '#D88918',
-          600: '#A66411',
-          700: '#94590F',
-          800: '#70430B',
-          900: '#4C2D08',
+          DEFAULT: '#7A290B',
+          50: '#F9F2EF',
+          100: '#F3DFD8',
+          200: '#EBBEAD',
+          300: '#E59476',
+          400: '#E46232',
+          500: '#C94412',
+          600: '#9D350E',
+          700: '#7A290B', // brand rust
+          800: '#5B1F08',
+          900: '#3D1405',
         },
         secondary: {
-          DEFAULT: '#E48A42',
-          50: '#FDF3EB',
-          100: '#FAE2CC',
-          400: '#EAA468',
-          500: '#E48A42',
-          600: '#C66F2C',
+          DEFAULT: '#BBA173',
+          50: '#F7F5F3',
+          100: '#EDE9E3',
+          200: '#E0D7C8',
+          300: '#CEBEA1',
+          400: '#C5AF89',
+          500: '#BBA173', // brand tan
+          600: '#A7874E',
+          700: '#846B3E',
+          800: '#604E2F',
+          900: '#3F3320',
         },
         neutral: {
           DEFAULT: '#B7A392',
@@ -61,9 +72,10 @@ export default {
         showcase: '2.5rem',
       },
       boxShadow: {
-        soft: '0 4px 24px -4px rgba(58,42,16,0.08)',
-        lift: '0 20px 48px -12px rgba(184,111,19,0.28)',
-        card: '0 2px 16px -4px rgba(58,42,16,0.06)',
+        // Tinted with the brand rust rather than neutral black.
+        soft: '0 4px 24px -4px rgba(61,20,5,0.08)',
+        lift: '0 20px 48px -12px rgba(122,41,11,0.26)',
+        card: '0 2px 16px -4px rgba(61,20,5,0.06)',
       },
       keyframes: {
         'fade-up': {

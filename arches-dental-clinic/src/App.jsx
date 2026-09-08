@@ -12,6 +12,8 @@ import ClinicInfo from './components/ClinicInfo'
 import FAQ from './components/FAQ'
 import FinalCTA from './components/FinalCTA'
 import Footer from './components/Footer'
+import CookieConsent from './components/CookieConsent'
+import LegalDialogs from './components/LegalDialogs'
 
 function App() {
   useScrollReveal()
@@ -40,21 +42,26 @@ function App() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-surface overflow-x-hidden">
+    <div className="min-h-screen bg-surface overflow-x-clip">
       <Navbar />
       <main>
         <Hero />
-        <TrustStats />
-        <About />
-        <Services />
-        <WhyChoose />
-        <GoogleReviews />
-        <Gallery />
-        <ClinicInfo />
-        <FAQ />
-        <FinalCTA />
+        {/* Opaque, above the pinned hero — the page scrolls up over the photo */}
+        <div className="relative z-10 bg-surface">
+          <TrustStats />
+          <About />
+          <Services />
+          <WhyChoose />
+          <GoogleReviews />
+          <Gallery />
+          <ClinicInfo />
+          <FAQ />
+          <FinalCTA />
+        </div>
       </main>
       <Footer />
+      <LegalDialogs />
+      <CookieConsent />
     </div>
   )
 }

@@ -8,7 +8,7 @@ export default function FinalCTA() {
       <div className="reveal relative mx-auto max-w-content rounded-showcase overflow-hidden bg-gradient-to-br from-primary-700 to-primary-800 px-8 py-16 md:px-16 md:py-20 text-center">
         {/* Ambient glows */}
         <div className="absolute -top-20 -left-20 w-72 h-72 rounded-full bg-white/10 blur-3xl pointer-events-none" aria-hidden="true" />
-        <div className="absolute -bottom-24 -right-16 w-80 h-80 rounded-full bg-white/8 blur-3xl pointer-events-none" aria-hidden="true" />
+        <div className="absolute -bottom-24 -right-16 w-80 h-80 rounded-full bg-white/10 blur-3xl pointer-events-none" aria-hidden="true" />
 
         <ArchSwoop
           variant="wide"
@@ -36,7 +36,7 @@ export default function FinalCTA() {
               href={clinic.mapsDirectionsHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-white/12 hover:bg-white/22 text-white font-heading font-semibold px-8 py-4 rounded-full border border-white/30 hover:border-white/50 active:scale-[0.97] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/20 text-white font-heading font-semibold px-8 py-4 rounded-full border border-white/30 hover:border-white/50 active:scale-[0.97] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] w-full sm:w-auto"
             >
               <Navigation className="h-5 w-5" />
               Get Directions

@@ -2,7 +2,8 @@ import { Check } from 'lucide-react'
 import ArchSwoop from './ArchSwoop'
 import ImageAssets from './ImageAssets'
 
-import AboutImage from '../assets/images/about.jpg'
+import AboutImage from '../assets/images/about.webp'
+import FoilBg from '../assets/images/foil-bg.webp'
 
 const highlights = [
   'Experienced, gentle dentists',
@@ -14,8 +15,13 @@ const highlights = [
 
 export default function About() {
   return (
-    <section id="about" className="relative py-24 md:py-32 bg-surface-warm overflow-hidden">
-      <div className="mx-auto max-w-content px-5 md:px-8 grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+    <section id="about" className="about-foil relative py-24 md:py-32 bg-surface-warm overflow-hidden">
+      {/* Foil shimmer — two copies, the second flipped, cross-fading on scroll */}
+      <div className="about-foil__bg" aria-hidden="true">
+        <img src={FoilBg} alt="" className="about-foil__layer" />
+        <img src={FoilBg} alt="" className="about-foil__layer about-foil__layer--b" />
+      </div>
+      <div className="relative mx-auto max-w-content px-5 md:px-8 grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
         {/* Image */}
         <div className="relative reveal order-2 lg:order-1">
           <div className="relative rounded-showcase overflow-hidden shadow-lift aspect-[4/5] max-w-md mx-auto lg:mx-100">
@@ -28,12 +34,12 @@ export default function About() {
           </div>
           {/* Floating stat badge */}
           <div className="absolute -bottom-6 -right-1 sm:-right-1 bg-white rounded-card shadow-lift p-5 max-w-[170px] border border-neutral-100">
-            <p className="font-heading font-bold text-3xl text-primary-500 leading-none mb-1">4+</p>
+            <p className="font-heading font-bold text-3xl text-primary-600 leading-none mb-1">4+</p>
             <p className="text-sm text-ink-soft font-medium leading-snug">years caring for local smiles</p>
           </div>
           <ArchSwoop
             variant="tight"
-            color="#B7A392"
+            color="#BBA173"
             strokeWidth={4}
             className="hidden lg:block absolute -top-10 -left-10 w-40 h-20 opacity-50"
           />
@@ -46,7 +52,7 @@ export default function About() {
           </span>
           <h2 className="reveal stagger-1 text-3xl md:text-4xl font-bold mb-5 tracking-tight">
             Dental care built around{' '}
-            <span className="text-primary-500">you</span>
+            <span className="text-primary-600">you</span>
           </h2>
           <p className="reveal stagger-2 text-ink-soft leading-relaxed mb-9 max-w-[52ch]">
             For over four years, Arches Dental Clinic has welcomed patients of every age into a

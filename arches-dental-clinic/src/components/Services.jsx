@@ -128,7 +128,7 @@ export default function Services() {
 
         <ArchSwoop
           variant="wide"
-          color="#E6DCD2"
+          color="#E0D7C8"
           strokeWidth={3}
           className="hidden md:block w-full h-10 mt-16 opacity-70"
         />

@@ -108,7 +108,16 @@ export default function Footer() {
 
         <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/55">
           <p>© {year} {clinic.name}. All rights reserved.</p>
-          <p>Designed with care for healthier smiles.</p>
+          <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+            <a href="#privacy-policy" className="text-white/70 transition-colors duration-200 hover:text-primary-400">Privacy Policy</a>
+            <a href="#terms-of-service" className="text-white/70 transition-colors duration-200 hover:text-primary-400">Terms of Service</a>
+            <button
+              onClick={() => { try { localStorage.removeItem('adc-cookie-consent') } catch { /* nothing stored */ } window.location.reload() }}
+              className="text-white/70 transition-colors duration-200 hover:text-primary-400"
+            >
+              Cookie settings
+            </button>
+          </nav>
         </div>
       </div>
     </footer>
@@ -134,14 +143,14 @@ function ArchMark({ className }) {
     <svg viewBox="0 0 60 60" className={className} aria-hidden="true">
       <path
         d="M14 12C9 18 9 30 12 42C13.5 47 18 47 19.5 41C21 35 25 35 26 40"
-        stroke="#E48A42"
+        stroke="#E46232"
         strokeWidth="5.5"
         strokeLinecap="round"
         fill="none"
       />
       <path
         d="M26 18C30 12 38 10 44 16"
-        stroke="#B7A392"
+        stroke="#BBA173"
         strokeWidth="5.5"
         strokeLinecap="round"
         fill="none"
