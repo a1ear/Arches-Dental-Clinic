@@ -10,7 +10,6 @@ import GoogleReviews from './components/GoogleReviews'
 import Gallery from './components/Gallery'
 import ClinicInfo from './components/ClinicInfo'
 import FAQ from './components/FAQ'
-import FinalCTA from './components/FinalCTA'
 import Footer from './components/Footer'
 import CookieConsent from './components/CookieConsent'
 import LegalDialogs from './components/LegalDialogs'
@@ -56,7 +55,6 @@ function App() {
           <Gallery />
           <ClinicInfo />
           <FAQ />
-          <FinalCTA />
         </div>
       </main>
       <Footer />

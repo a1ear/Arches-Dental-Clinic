@@ -1,45 +1,21 @@
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
-
-const faqs = [
-  {
-    q: 'Do I need to book an appointment in advance?',
-    a: 'To improve efficiency while reducing unused or delayed appointment slots, we have transitioned to a FIRST-COME FIRST-SERVED approach. This ensures faster service for everyone and minimizes unnecessary waiting and scheduling gaps.',
-  },
-  {
-    q: 'What should I expect during my first visit?',
-    a: 'Your first visit typically includes a dental examination, X-rays if needed, and a discussion of your oral health and treatment options.',
-  },
-  {
-    q: 'How often should I come in for a cleaning?',
-    a: 'Most patients benefit from a checkup and cleaning every six months, though your dentist may recommend a different schedule based on your oral health.',
-  },
-  {
-    q: 'Do you treat children and teenagers?',
-    a: 'Yes — our team welcomes patients of every age, from a child\u2019s first visit through adult and orthodontic care, in a relaxed family-friendly setting.',
-  },
-  {
-    q: 'What should I do in a dental emergency?',
-    a: 'Call our emergency line right away. We reserve same-day slots for urgent issues like severe pain, broken teeth, or swelling, and will guide you on next steps over the phone.',
-  },
-  {
-    q: 'Is parking available at the clinic?',
-    a: 'Yes, free on-site parking is available directly in front of the clinic, with additional street parking nearby.',
-  },
-]
+import { useLocale } from '../i18n/LocaleContext'
 
 export default function FAQ() {
+  const { t } = useLocale()
+  const faqs = t('faq.items')
   const [openIndex, setOpenIndex] = useState(-1)
 
   return (
     <section id="faq" className="relative py-24 md:py-32 bg-surface-alt">
-      <div className="mx-auto max-w-content px-5 md:px-8 max-w-3xl">
+      <div className="mx-auto max-w-3xl px-5 md:px-8">
         <div className="text-center mb-14">
           <span className="reveal inline-block text-primary-600 font-heading font-semibold text-sm tracking-widest uppercase mb-4">
-            Common Questions
+            {t('faq.eyebrow')}
           </span>
           <h2 className="reveal stagger-1 text-3xl md:text-4xl font-bold tracking-tight">
-            Frequently Asked Questions
+            {t('faq.title')}
           </h2>
         </div>
 
