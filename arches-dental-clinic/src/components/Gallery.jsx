@@ -13,7 +13,10 @@ const sources = [ReceptionImage, TreatmentRoomImage, DentalEquipmentImage, Clini
 export default function Gallery() {
   const { t } = useLocale()
   const photos = t('gallery.photos')
-  const [emblaRef, emblaApi] = useEmblaCarousel({ align: 'center', loop: true })
+  // 'start', not 'center': the viewport is a whole number of cards wide, so
+  // aligning to the leading edge lands every card on a boundary. Centring the
+  // active card instead left a sliced card at each edge on every snap.
+  const [emblaRef, emblaApi] = useEmblaCarousel({ align: 'start', loop: true })
   const [selectedIndex, setSelectedIndex] = useState(0)
 
   const onSelect = useCallback((api) => setSelectedIndex(api.selectedScrollSnap()), [])
@@ -49,13 +52,21 @@ export default function Gallery() {
 
         {/* Carousel */}
         <div className="reveal relative">
-          {/* Embla viewport — overflow is clipped here, the container inside is what Embla translates */}
-          <div className="overflow-hidden -mx-5 px-5 md:-mx-8 md:px-8" ref={emblaRef}>
+          {/* Embla viewport — clipped at the content column, so a card is never
+              sliced by the edge of the screen */}
+          <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex gap-4 md:gap-5">
               {photos.map((photo, i) => (
+                /* Widths are the exact share left once the gap is subtracted,
+                   so a snap always lands on whole cards.
+                   Two up, not three: looping needs enough slides to fill the
+                   viewport on both sides of the current one, and four photos
+                   at a third each only come to 133% of it — Embla quietly
+                   stops looping. At half each they come to 200%, which is
+                   enough. Three up needs more photos, not a smaller card. */
                 <div
                   key={photo.label}
-                  className="shrink-0 w-[82vw] sm:w-[60vw] md:w-[calc(50%-10px)] lg:w-[calc(40%-10px)] aspect-[4/3] rounded-card overflow-hidden shadow-card group"
+                  className="shrink-0 w-[86%] sm:w-[calc(50%-8px)] md:w-[calc(50%-10px)] aspect-[4/3] rounded-card overflow-hidden shadow-card group"
                 >
                   <ImageAssets
                     src={sources[i]}

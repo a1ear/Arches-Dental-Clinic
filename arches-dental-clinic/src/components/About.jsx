@@ -1,21 +1,44 @@
+import { useEffect, useRef, useState } from 'react'
 import { Check } from 'lucide-react'
 import ArchSwoop from './ArchSwoop'
 import ImageAssets from './ImageAssets'
 import { useLocale } from '../i18n/LocaleContext'
 
 import AboutImage from '../assets/images/about.webp'
-import FoilBg from '../assets/images/foil-bg.webp'
 
 export default function About() {
   const { t } = useLocale()
   const highlights = t('about.highlights')
 
+  // The blobs are only animated while the section is on screen. A blurred
+  // layer has to be re-composited every frame it moves, and there is no reason
+  // to spend that on a section nobody is looking at.
+  const sectionRef = useRef(null)
+  const [inView, setInView] = useState(false)
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el || typeof IntersectionObserver === 'undefined') return setInView(true)
+    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { rootMargin: '200px' })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
   return (
-    <section id="about" className="about-foil relative py-24 md:py-32 bg-surface-warm overflow-hidden">
-      {/* Foil shimmer — two copies, the second flipped, cross-fading on scroll */}
-      <div className="about-foil__bg" aria-hidden="true">
-        <img src={FoilBg} alt="" className="about-foil__layer" />
-        <img src={FoilBg} alt="" className="about-foil__layer about-foil__layer--b" />
+    <section
+      ref={sectionRef}
+      id="about"
+      className="relative py-24 md:py-32 bg-surface-warm overflow-hidden"
+    >
+      {/* Lava-lamp mesh gradient — see .lava in index.css */}
+      <div className={`lava ${inView ? 'lava--live' : ''}`} aria-hidden="true">
+        <div className="lava__field">
+          <span className="lava__blob lava__blob--a" />
+          <span className="lava__blob lava__blob--b" />
+          <span className="lava__blob lava__blob--c" />
+          <span className="lava__blob lava__blob--d" />
+          <span className="lava__blob lava__blob--e" />
+        </div>
+        <div className="lava__grain" />
       </div>
 
       <div className="relative mx-auto max-w-content px-5 md:px-8 grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
