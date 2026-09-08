@@ -203,19 +203,26 @@ p {
   }
 }
 
-/* ─── About: foil shimmer ──────────────────────────────────────────────────── */
+/* ─── About: lava-lamp mesh gradient ───────────────────────────────────────── */
 /*
- * Two copies of the same foil texture, the second flipped on both axes, their
- * opacities pulsing in opposition as the section passes through the viewport.
- * Scroll-driven, so it costs nothing while off-screen. Where scroll-driven
- * animations aren't supported the second layer is simply dropped and the first
- * sits static — the section still reads as intended.
+ * Five soft blobs drifting behind the About copy, each on its own clock so the
+ * field never visibly repeats.
+ *
+ * There is deliberately no `filter: blur()` here. The obvious build of this
+ * effect blurs a parent holding hard-edged circles, but that filter costs
+ * roughly 45fps on this page even with every blob held still — it is the blur
+ * being re-rasterised, not the motion. A radial gradient that fades to
+ * transparent over most of its radius is already a blurred blob, so the
+ * softness comes from the gradient falloff instead and the layer is left
+ * unfiltered. Nothing but `transform` animates, which the compositor handles
+ * without repainting: 60fps, and no cliff on a phone with a weak GPU.
+ *
+ * Blending is left `normal` rather than `multiply`. Under normal compositing
+ * the result can never come out darker than the darkest blob, so the body copy
+ * over it has a contrast floor no matter how the blobs stack up. Multiply
+ * looks richer and quietly drops overlaps to about 2.7:1.
  */
-.about-foil {
-  view-timeline-name: --about-foil-tl;
-}
-
-.about-foil__bg {
+.lava {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -224,47 +231,129 @@ p {
   background-color: theme('colors.surface.warm');
 }
 
-.about-foil__layer {
+.lava__field {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
-@keyframes foil-shimmer {
-  0%, 20%, 40%, 60%, 80%, 100% { opacity: 1; }
-  10%, 30%, 50%, 70%, 90% { opacity: 0.5; }
+.lava__blob {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+  /* Paused until the section is actually on screen — see About.jsx. */
+  animation-play-state: paused;
 }
 
-@keyframes foil-shimmer-reverse {
-  0%, 20%, 40%, 60%, 80%, 100% { opacity: 0.5; }
-  10%, 30%, 50%, 70%, 90% { opacity: 1; }
+.lava--live .lava__blob {
+  animation-play-state: running;
 }
 
-@supports (animation-timeline: view()) and (animation-range: 0% 100%) {
-  .about-foil__layer {
-    animation: foil-shimmer ease-in-out both;
-    animation-timeline: --about-foil-tl;
-    animation-range: cover 0% cover 100%;
-    transform-origin: center;
-  }
-  .about-foil__layer--b {
-    animation-name: foil-shimmer-reverse;
-    transform: rotateY(180deg) rotateX(180deg);
-  }
+.lava__blob--a {
+  top: -14%;
+  left: -10%;
+  width: 62%;
+  height: 60%;
+  background: radial-gradient(circle at 50% 50%, rgb(235 190 173 / 0.62) 0%, rgb(235 190 173 / 0) 78%);
+  animation: lava-a 26s ease-in-out infinite;
 }
 
-@supports not ((animation-timeline: view()) and (animation-range: 0% 100%)) {
-  .about-foil__layer--b { display: none; }
+.lava__blob--b {
+  top: 8%;
+  right: -14%;
+  width: 58%;
+  height: 66%;
+  background: radial-gradient(circle at 50% 50%, rgb(206 190 161 / 0.5) 0%, rgb(206 190 161 / 0) 80%);
+  animation: lava-b 31s ease-in-out infinite;
 }
 
-/* Scroll-driven animations ignore duration, so the global reduce rule can't
-   switch these off — do it explicitly. */
-@media (prefers-reduced-motion: reduce) {
-  .about-foil__layer { animation: none !important; opacity: 1; }
-  .about-foil__layer--b { display: none; }
+.lava__blob--c {
+  top: 18%;
+  left: 22%;
+  width: 70%;
+  height: 62%;
+  background: radial-gradient(circle at 50% 50%, rgb(243 223 216 / 0.85) 0%, rgb(243 223 216 / 0) 78%);
+  animation: lava-c 37s ease-in-out infinite;
 }
+
+.lava__blob--d {
+  bottom: -20%;
+  left: 4%;
+  width: 66%;
+  height: 58%;
+  background: radial-gradient(circle at 50% 50%, rgb(224 215 200 / 0.7) 0%, rgb(224 215 200 / 0) 80%);
+  animation: lava-d 43s ease-in-out infinite;
+}
+
+/* The heat core: the one saturated blob, kept small and thin so it reads as a
+   glow rising through the others rather than a stain under the paragraph. */
+.lava__blob--e {
+  bottom: 6%;
+  right: 16%;
+  width: 34%;
+  height: 34%;
+  background: radial-gradient(circle at 50% 50%, rgb(229 148 118 / 0.34) 0%, rgb(229 148 118 / 0) 76%);
+  animation: lava-e 23s ease-in-out infinite;
+}
+
+/* Each track returns to its own start so the loop has no seam. The uneven
+   scaleX/scaleY is what gives the stretch-and-recover of liquid under heat. */
+@keyframes lava-a {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1, 1); }
+  25%      { transform: translate3d(14%, 18%, 0) scale(1.18, 0.88); }
+  50%      { transform: translate3d(4%, 34%, 0) scale(0.92, 1.22); }
+  75%      { transform: translate3d(-12%, 14%, 0) scale(1.1, 0.96); }
+}
+
+@keyframes lava-b {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1, 1); }
+  30%      { transform: translate3d(-18%, 22%, 0) scale(0.88, 1.2); }
+  60%      { transform: translate3d(-8%, -16%, 0) scale(1.24, 0.9); }
+  85%      { transform: translate3d(10%, 8%, 0) scale(1.02, 1.08); }
+}
+
+@keyframes lava-c {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1, 1); }
+  20%      { transform: translate3d(-16%, -12%, 0) scale(1.14, 1.02); }
+  45%      { transform: translate3d(12%, -22%, 0) scale(0.9, 1.16); }
+  70%      { transform: translate3d(18%, 10%, 0) scale(1.2, 0.92); }
+}
+
+@keyframes lava-d {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1, 1); }
+  35%      { transform: translate3d(20%, -18%, 0) scale(1.16, 0.9); }
+  65%      { transform: translate3d(6%, -32%, 0) scale(0.94, 1.18); }
+  88%      { transform: translate3d(-14%, -10%, 0) scale(1.06, 1.04); }
+}
+
+@keyframes lava-e {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1, 1); }
+  28%      { transform: translate3d(-22%, -26%, 0) scale(1.3, 1.12); }
+  55%      { transform: translate3d(-34%, -54%, 0) scale(0.86, 0.94); }
+  80%      { transform: translate3d(-10%, -24%, 0) scale(1.12, 1.2); }
+}
+
+/*
+ * Grain, to break up the banding that wide low-contrast gradients show on
+ * 8-bit displays. Static, so it costs one paint and nothing after that.
+ * feTurbulence is colourful by default; the saturate matrix takes it to grey.
+ */
+.lava__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.3;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)' opacity='0.55'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+/* At phone width the two lower blobs sit behind the image card anyway. */
+@media (max-width: 640px) {
+  .lava__blob--d,
+  .lava__blob--e { display: none; }
+}
+
+/* The global reduce rule collapses animation-duration, which lands every track
+   on its 100% frame — identical to 0%, so the field simply holds still. */
 
 /* ─── Header entrance ──────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: no-preference) {
