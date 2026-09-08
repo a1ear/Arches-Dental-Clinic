@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { navLinks } from '../data/clinic'
 import { useLocale } from '../i18n/LocaleContext'
+import useSectionProgress from '../hooks/useSectionProgress'
 import LocaleSwitcher from './LocaleSwitcher'
 
 import logoDark from '../assets/brand/arches-logo-full.png'
@@ -11,12 +12,21 @@ import logoLight from '../assets/brand/arches-logo-light.png'
  * Two states. Over the dark hero the bar is transparent with a rust gradient
  * and light type; once scrolled past it, it becomes the white blurred bar with
  * ink type. The logo crossfades between its rust and cream cuts to match.
+ *
+ * Under the links runs a hairline rule with a marker on it. The marker slides
+ * to whichever section you are reading and fills left to right as you scroll
+ * through that section, so the rule reads as progress through the page.
  */
+
+const SECTION_IDS = navLinks.map((l) => l.href.slice(1))
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const { t } = useLocale()
+
+  const ids = useMemo(() => SECTION_IDS, [])
+  const { index: active, page } = useSectionProgress(ids)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16)
@@ -56,24 +66,55 @@ export default function Navbar() {
           />
         </a>
 
-        <ul className="hidden items-center gap-7 md:flex lg:gap-8">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className={`group relative py-1 text-[15px] font-medium transition-colors duration-200 ${
-                  scrolled ? 'text-ink-soft hover:text-primary-700' : 'text-white/85 hover:text-white'
-                }`}
-              >
-                {t(`nav.${link.href.slice(1)}`)}
-                <span
-                  className={`absolute -bottom-0.5 left-0 h-[2px] w-0 rounded-full transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:w-full ${
-                    scrolled ? 'bg-primary-600' : 'bg-secondary-400'
+        <ul className="relative hidden items-center gap-7 md:flex lg:gap-8">
+          {navLinks.map((link, i) => {
+            const isActive = i === active
+            return (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  aria-current={isActive ? 'true' : undefined}
+                  className={`group relative py-1 text-[15px] transition-colors duration-200 ${
+                    isActive ? 'font-semibold' : 'font-medium'
+                  } ${
+                    scrolled
+                      ? isActive
+                        ? 'text-primary-700'
+                        : 'text-ink-soft hover:text-primary-700'
+                      : isActive
+                        ? 'text-white'
+                        : 'text-white/85 hover:text-white'
                   }`}
-                />
-              </a>
-            </li>
-          ))}
+                >
+                  {t(`nav.${link.href.slice(1)}`)}
+                  {!isActive && (
+                    <span
+                      className={`absolute -bottom-0.5 left-0 h-[2px] w-0 rounded-full transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:w-full ${
+                        scrolled ? 'bg-primary-300' : 'bg-white/50'
+                      }`}
+                    />
+                  )}
+                </a>
+              </li>
+            )
+          })}
+
+          {/* Scroll progress: the rule under the links fills left to right in
+              step with the scrollbar. Track and fill share one element so the
+              fill can't drift off the rule at any width. */}
+          <span
+            aria-hidden="true"
+            className={`pointer-events-none absolute -bottom-2 left-0 right-0 h-[2px] overflow-hidden rounded-full transition-colors duration-500 ${
+              scrolled ? 'bg-neutral-200' : 'bg-white/25'
+            }`}
+          >
+            <span
+              className={`block h-full rounded-full transition-[width] duration-150 ease-linear motion-reduce:transition-none ${
+                scrolled ? 'bg-primary-600' : 'bg-secondary-400'
+              }`}
+              style={{ width: `${page * 100}%` }}
+            />
+          </span>
         </ul>
 
         <div className="hidden items-center md:flex">
@@ -103,17 +144,31 @@ export default function Navbar() {
       >
         <div className="mx-4 overflow-hidden rounded-card border border-neutral-100 bg-white p-3 shadow-card">
           <ul className="flex flex-col">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="block rounded-xl px-3 py-2.5 font-medium text-ink-soft transition-all duration-200 hover:bg-primary-50 hover:text-primary-700"
-                >
-                  {t(`nav.${link.href.slice(1)}`)}
-                </a>
-              </li>
-            ))}
+            {navLinks.map((link, i) => {
+              const isActive = i === active
+              return (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    aria-current={isActive ? 'true' : undefined}
+                    className={`relative block rounded-xl px-3 py-2.5 font-medium transition-all duration-200 ${
+                      isActive
+                        ? 'bg-primary-50 font-semibold text-primary-700'
+                        : 'text-ink-soft hover:bg-primary-50 hover:text-primary-700'
+                    }`}
+                  >
+                    {isActive && (
+                      <span
+                        aria-hidden="true"
+                        className="absolute inset-y-2 left-0 w-[3px] rounded-full bg-primary-600"
+                      />
+                    )}
+                    {t(`nav.${link.href.slice(1)}`)}
+                  </a>
+                </li>
+              )
+            })}
           </ul>
           <div className="mt-2 border-t border-neutral-100">
             <LocaleSwitcher variant="inline" />

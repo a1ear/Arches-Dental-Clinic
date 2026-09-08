@@ -51,10 +51,11 @@ export const services = [
   },
 ]
 
+// Order matches the page: About comes before Services on the way down.
 export const navLinks = [
   { label: 'Home', href: '#home' },
-  { label: 'Services', href: '#services' },
   { label: 'About', href: '#about' },
+  { label: 'Services', href: '#services' },
   { label: 'Reviews', href: '#reviews' },
   { label: 'Contact', href: '#contact' },
   { label: 'FAQ', href: '#faq' },
