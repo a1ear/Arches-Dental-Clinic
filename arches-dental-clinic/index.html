@@ -42,7 +42,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Local Business Structured Data (JSON-LD) -->
+    <!-- Local Business Structured Data (JSON-LD)
+         vercel.json's CSP allows only this exact script by its content hash
+         rather than 'unsafe-inline', so any edit to what's between the tags
+         below — the phone number, the address, anything — needs the hash in
+         vercel.json's script-src recomputed too, or the block gets silently
+         dropped by the browser (structured data lost, page unaffected). From
+         this directory:
+           node -e "const fs=require('fs'),crypto=require('crypto');const h=fs.readFileSync('index.html','utf8');const s=h.indexOf('<script type=\"application/ld+json\">')+37;const e=h.indexOf('</script>',s);console.log('sha256-'+crypto.createHash('sha256').update(h.slice(s,e),'utf8').digest('base64'))" -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
