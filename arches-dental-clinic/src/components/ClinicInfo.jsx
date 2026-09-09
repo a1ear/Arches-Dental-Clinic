@@ -79,7 +79,7 @@ export default function ClinicInfo() {
               className="absolute inset-0 w-full h-full grayscale-[15%]"
               style={{ border: 0 }}
               loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+              referrerPolicy="strict-origin-when-cross-origin"
             />
           </div>
         </div>
