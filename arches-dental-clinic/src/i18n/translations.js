@@ -99,8 +99,8 @@ export const translations = {
       eyebrow: 'Take a Look Inside',
       title: 'Take a Look Inside Our Clinic',
       body: 'Explore our welcoming environment and modern facilities.',
-      prev: 'Previous photo', next: 'Next photo', nav: 'Gallery navigation',
-      goTo: 'Go to photo {n}: {label}',
+      prev: 'Previous photo', next: 'Next photo',
+      viewLarger: 'View {label} larger', counter: '{n} of {total}',
       photos: [
         { label: 'Reception Area', alt: 'Welcoming reception area at Arches Dental Clinic' },
         { label: 'Treatment Room', alt: 'Modern treatment room at Arches Dental Clinic' },
@@ -238,8 +238,8 @@ export const translations = {
       eyebrow: 'Silipin ang Loob',
       title: 'Silipin ang Loob ng Aming Klinika',
       body: 'Tuklasin ang aming magiliw na kapaligiran at makabagong pasilidad.',
-      prev: 'Nakaraang larawan', next: 'Susunod na larawan', nav: 'Nabigasyon ng gallery',
-      goTo: 'Pumunta sa larawan {n}: {label}',
+      prev: 'Nakaraang larawan', next: 'Susunod na larawan',
+      viewLarger: 'Tingnan nang mas malaki ang {label}', counter: '{n} sa {total}',
       photos: [
         { label: 'Reception Area', alt: 'Magiliw na reception area sa Arches Dental Clinic' },
         { label: 'Silid Paggamot', alt: 'Makabagong silid paggamot sa Arches Dental Clinic' },
@@ -378,8 +378,8 @@ export const translations = {
       eyebrow: 'Tan-awa ang Sulod',
       title: 'Tan-awa ang Sulod sang Amon Klinika',
       body: 'Usisaa ang amon mainabyanon nga palibot kag moderno nga pasilidad.',
-      prev: 'Nagligad nga litrato', next: 'Masunod nga litrato', nav: 'Nabigasyon sang gallery',
-      goTo: 'Kadto sa litrato {n}: {label}',
+      prev: 'Nagligad nga litrato', next: 'Masunod nga litrato',
+      viewLarger: 'Tan-awa nga mas dako ang {label}', counter: '{n} sa {total}',
       photos: [
         { label: 'Reception Area', alt: 'Mainabyanon nga reception area sa Arches Dental Clinic' },
         { label: 'Kwarto sang Bulong', alt: 'Moderno nga kwarto sang bulong sa Arches Dental Clinic' },
