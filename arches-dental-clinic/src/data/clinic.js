@@ -32,7 +32,7 @@ export const services = [
     id: 'general-dentistry',
     name: 'General Dentistry',
     description:
-      'Routine cleanings, exams, and preventive care to keep your whole family\u2019s smiles healthy year-round.',
+      'Routine cleanings, exams, and preventive care to keep your whole family smiles healthy year-round.',
     icon: 'Sparkles',
   },
   {
