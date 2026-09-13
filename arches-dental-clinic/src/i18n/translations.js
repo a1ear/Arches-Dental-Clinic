@@ -34,7 +34,7 @@ export const translations = {
       learnMore: 'Learn More', close: 'Close', viewAllReviews: 'View All Reviews',
     },
     hero: {
-      title1: 'Healthy Smiles', title2: 'Begin Here',
+      title1: 'Healthy Smile', title2: 'Begins Here',
       body: 'takes walk-ins — no appointment needed — with modern technology and compassionate care for every age.',
     },
     stats: [
@@ -65,7 +65,7 @@ export const translations = {
       items: {
         'general-dentistry': {
           name: 'General Dentistry',
-          description: 'Routine cleanings, exams, and preventive care to keep your whole family’s smiles healthy year-round.',
+          description: 'Routine cleanings, exams, and preventive care to keep your whole family smiles healthy year-round.',
         },
         orthodontics: {
           name: 'Orthodontics',
