@@ -1,33 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!--
+    One URL, on purpose. This is a single-page site: #about, #services and the
+    rest are anchors on this same page, and Google ignores everything after a
+    "#", so listing them only produced duplicates of "/". If the site ever gains
+    real routes (e.g. /privacy-policy as its own page), add each one here.
+  -->
   <url>
-    <loc>https://archesdentalclinic.online/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://www.archesdentalclinic.online/</loc>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://archesdentalclinic.online/#about</loc>
-    <lastmod>2026-08-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://archesdentalclinic.online/#services</loc>
-    <lastmod>2026-08-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://archesdentalclinic.online/#gallery</loc>
-    <lastmod>2026-08-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://archesdentalclinic.online/#contact</loc>
-    <lastmod>2026-08-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
 </urlset>

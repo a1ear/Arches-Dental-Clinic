@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://archesdentalclinic.online/sitemap.xml
+Sitemap: https://www.archesdentalclinic.online/sitemap.xml
