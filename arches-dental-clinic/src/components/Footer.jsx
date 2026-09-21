@@ -113,7 +113,7 @@ export default function Footer() {
 
         <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/55">
           <p>
-            © {year} {clinic.name}. {t('footer.rights')}
+            © <span suppressHydrationWarning>{year}</span> {clinic.name}. {t('footer.rights')}
           </p>
           <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
             <a href="#privacy-policy" className="text-white/70 transition-colors duration-200 hover:text-primary-400">

@@ -16,19 +16,29 @@ function readStored() {
 }
 
 export function LocaleProvider({ children }) {
-  const [locale, setLocaleState] = useState(readStored)
+  // Always start in English. The prerendered HTML is English, and a hydrating
+  // client has to render the same tree the server sent — reading localStorage
+  // here would hand a returning Tagalog visitor a different one. Their saved
+  // choice is applied right after hydration instead.
+  const [locale, setLocaleState] = useState(DEFAULT)
+
+  useEffect(() => {
+    const stored = readStored()
+    if (stored !== DEFAULT) setLocaleState(stored)
+  }, [])
 
   useEffect(() => {
     document.documentElement.lang = locale === 'hil' ? 'hil' : locale
-    try {
-      localStorage.setItem(STORAGE_KEY, locale)
-    } catch {
-      /* private mode — the choice just won't persist */
-    }
   }, [locale])
 
   const setLocale = useCallback((code) => {
-    if (LOCALES.some((l) => l.code === code)) setLocaleState(code)
+    if (!LOCALES.some((l) => l.code === code)) return
+    setLocaleState(code)
+    try {
+      localStorage.setItem(STORAGE_KEY, code)
+    } catch {
+      /* private mode — the choice just won't persist */
+    }
   }, [])
 
   // t('hero.title1') — falls back to English, then to the key itself, so a
