@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { Sparkles, AlignCenter, Stethoscope, ChevronDown, X } from 'lucide-react'
+import { Sparkles, AlignCenter, SmilePlus, Stethoscope, ChevronDown, X } from 'lucide-react'
 import { services } from '../data/clinic'
 import { useLocale } from '../i18n/LocaleContext'
 import ArchSwoop from './ArchSwoop'
 
-const icons = { Sparkles, AlignCenter, Stethoscope }
+const icons = { Sparkles, AlignCenter, SmilePlus, Stethoscope }
 
 /*
  * Procedure names stay in English across all locales — that is how they are
@@ -30,6 +30,15 @@ const details = {
       'Traditional metal & ceramic braces',
       'Early orthodontic evaluation for children',
       'Retainers & post-treatment maintenance',
+    ],
+  },
+  // Only procedures the site already lists under General Dentistry — nothing
+  // new is being claimed here, just grouped where a searcher would look for it.
+  'cosmetic-dentistry': {
+    points: [
+      'Teeth Whitening',
+      'Tooth Crown',
+      'Others',
     ],
   },
   'oral-surgery': {
@@ -68,7 +77,7 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, i) => {
             const Icon = icons[service.icon]
             const name = t(`services.items.${service.id}.name`)

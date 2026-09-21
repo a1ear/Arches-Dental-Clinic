@@ -9,9 +9,9 @@
     <title>Arches Dental Clinic | Modern, Compassionate Dental Care</title>
     <meta
       name="description"
-      content="Arches Dental Clinic offers general dentistry, orthodontics, and oral surgery for patients of all ages. Modern technology, gentle care, and a warm, comfortable clinic in Kabankalan City. Call us today."
+      content="Dental clinic in Kabankalan City led by Dr. Rikki Hope C. Arches, DMD. General dentistry, orthodontics, cosmetic dentistry and oral surgery. Walk-ins welcome."
     />
-    <meta name="keywords" content="dentist, dental clinic, general dentistry, orthodontics, oral surgery, family dentist, Arches Dental Clinic, Kabankalan City dentist, Negros Occidental dentist" />
+    <meta name="keywords" content="dentist, dental clinic, general dentistry, orthodontics, cosmetic dentistry, oral surgery, family dentist, Rikki Hope Arches DMD, Arches Dental Clinic, Kabankalan City dentist, Negros Occidental dentist" />
     <meta name="author" content="Arches Dental Clinic" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://www.archesdentalclinic.online/" />
@@ -39,6 +39,15 @@
 
     <!-- Theme + Performance -->
     <meta name="theme-color" content="#7A290B" />
+
+    <!-- The page is prerendered, so its text is in the HTML even without
+         JavaScript — but the entrance animations start everything at opacity 0
+         and rely on script to reveal it. Without script, show it as-is. -->
+    <noscript>
+      <style>
+        .reveal, .hero__word, .hero__fade { opacity: 1 !important; transform: none !important; }
+      </style>
+    </noscript>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -49,13 +58,15 @@
         "@context": "https://schema.org",
         "@type": "Dentist",
         "name": "Arches Dental Clinic",
+        "alternateName": "Arches' Dental Clinic",
+        "description": "Dental clinic in Kabankalan City, Negros Occidental, led by Dr. Rikki Hope C. Arches, DMD. General dentistry, orthodontics, cosmetic dentistry and oral surgery for patients of all ages. Walk-ins welcome.",
         "url": "https://www.archesdentalclinic.online/",
         "image": "https://www.archesdentalclinic.online/og-image.jpg",
         "telephone": "+63-962-089-2497",
         "email": "r.archesdental@gmail.com",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Punta Guanzon St",
+          "streetAddress": "Door 1, ArchDag Building, Punta Guanzon Street",
           "addressLocality": "Kabankalan City",
           "addressRegion": "Negros Occidental",
           "postalCode": "6111",
@@ -74,7 +85,26 @@
             "closes": "17:00"
           }
         ],
-        "medicalSpecialty": ["General Dentistry", "Orthodontics", "Oral Surgery"],
+        "hasMap": "https://www.google.com/maps?q=Arches+Dental+Clinic,+Punta+Guanzon+Street,+Kabankalan+City,+Negros+Occidental",
+        "employee": {
+          "@type": "Person",
+          "name": "Rikki Hope C. Arches",
+          "honorificPrefix": "Dr.",
+          "honorificSuffix": "DMD",
+          "jobTitle": "Dentist",
+          "worksFor": { "@type": "Dentist", "name": "Arches Dental Clinic" }
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Dental services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "General Dentistry" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Orthodontics" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cosmetic Dentistry" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Oral Surgery" } }
+          ]
+        },
+        "medicalSpecialty": ["General Dentistry", "Orthodontics", "Cosmetic Dentistry", "Oral Surgery"],
         "priceRange": "₱₱",
         "sameAs": [
           "https://www.facebook.com/archesdental2024",

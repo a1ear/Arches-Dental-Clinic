@@ -5,7 +5,7 @@ export const clinic = {
   emergencyPhone: '0962 089 2497',
   emergencyPhoneHref: 'tel:+639620892497',
   email: 'r.archesdental@gmail.com',
-  address: 'Arches Dental Clinic, Punta Guanzon St, Kabankalan City, 6111 Negros Occidental',
+  address: 'Door 1, ArchDag Building, Punta Guanzon Street, Kabankalan City, 6111 Negros Occidental',
   mapsEmbedSrc:
     'https://www.google.com/maps?q=Arches+Dental+Clinic,+Punta+Guanzon+St,+Kabankalan+City,+6111+Negros+Occidental&output=embed',
   mapsDirectionsHref:
@@ -27,6 +27,12 @@ export const clinic = {
   googleReviewsUrl: 'https://share.google/zG338jiH8lbE01pfg',
 }
 
+// The clinic's dentist. Name and credential are proper nouns, not translated.
+export const dentist = {
+  name: 'Dr. Rikki Hope C. Arches',
+  credential: 'DMD',
+}
+
 export const services = [
   {
     id: 'general-dentistry',
@@ -41,6 +47,13 @@ export const services = [
     description:
       'Braces for kids, teens, and adults — straighter teeth, fitted to your life.',
     icon: 'AlignCenter',
+  },
+  {
+    id: 'cosmetic-dentistry',
+    name: 'Cosmetic Dentistry',
+    description:
+      'Whitening, crowns, and smile-enhancing care that improves how your teeth look — planned around what suits you and keeps your teeth healthy.',
+    icon: 'SmilePlus',
   },
   {
     id: 'oral-surgery',

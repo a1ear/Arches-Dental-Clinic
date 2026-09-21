@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
-import { Check } from 'lucide-react'
+import { BadgeCheck, Check } from 'lucide-react'
 import ArchSwoop from './ArchSwoop'
 import ImageAssets from './ImageAssets'
+import { dentist } from '../data/clinic'
 import { useLocale } from '../i18n/LocaleContext'
 
 import AboutImage from '../assets/images/about.webp'
@@ -73,8 +74,20 @@ export default function About() {
           <h2 className="reveal stagger-1 text-3xl md:text-4xl font-bold mb-5 tracking-tight">
             {t('about.title')} <span className="text-primary-600">{t('about.titleAccent')}</span>
           </h2>
-          <p className="reveal stagger-2 text-ink-soft leading-relaxed mb-9 max-w-[52ch]">
+          <p className="reveal stagger-2 text-ink-soft leading-relaxed mb-6 max-w-[52ch]">
             {t('about.body')}
+          </p>
+
+          <p className="reveal stagger-2 mb-9 flex items-center gap-3 text-[15px] text-ink-soft">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary-50 text-primary-600">
+              <BadgeCheck className="h-5 w-5" strokeWidth={2} />
+            </span>
+            <span>
+              {t('about.ledBy')}{' '}
+              <strong className="font-semibold text-ink-deep">
+                {dentist.name}, {dentist.credential}
+              </strong>
+            </span>
           </p>
 
           <ul className="space-y-3">

@@ -7,7 +7,7 @@
  *   - Clinical procedure names (root canal, fissure sealant, implants…) —
  *     these are used in English in Philippine dental practice, and inventing
  *     local equivalents would be less clear, not more.
- *   - Clinic name, address, phone, email.
+ *   - Clinic name, address, phone, email, and the dentist's name and credential.
  *   - The privacy policy and terms bodies — see src/data/legal.js.
  *
  * `tl` (Tagalog/Filipino) and `hil` (Hiligaynon/Ilonggo) are first drafts.
@@ -45,6 +45,7 @@ export const translations = {
     ],
     about: {
       eyebrow: 'About Our Clinic',
+      ledBy: 'Led by',
       title: 'Dental care built around', titleAccent: 'you',
       body: 'For over four years, Arches Dental Clinic has welcomed patients of every age into a warm, modern space where every visit feels personal. Our team blends genuine care with advanced technology, so you always know exactly what to expect — and never dread the chair.',
       highlights: [
@@ -70,6 +71,10 @@ export const translations = {
         orthodontics: {
           name: 'Orthodontics',
           description: 'Braces for kids, teens, and adults — straighter teeth, fitted to your life.',
+        },
+        'cosmetic-dentistry': {
+          name: 'Cosmetic Dentistry',
+          description: 'Whitening, crowns, and smile-enhancing care that improves how your teeth look — planned around what suits you and keeps your teeth healthy.',
         },
         'oral-surgery': {
           name: 'Oral Surgery',
@@ -184,6 +189,7 @@ export const translations = {
     ],
     about: {
       eyebrow: 'Tungkol Sa Aming Klinika',
+      ledBy: 'Pinamumunuan ni',
       title: 'Pangangalaga sa ngipin na nakasentro sa', titleAccent: 'iyo',
       body: 'Sa loob ng mahigit apat na taon, malugod na tinatanggap ng Arches Dental Clinic ang mga pasyente sa lahat ng edad sa isang mainit at makabagong espasyo kung saan personal ang bawat pagbisita. Pinagsasama ng aming koponan ang tunay na malasakit at makabagong teknolohiya, kaya alam mo palagi kung ano ang aasahan — at hindi mo na katatakutan ang silya.',
       highlights: [
@@ -209,6 +215,10 @@ export const translations = {
         orthodontics: {
           name: 'Ortodontiks (Braces)',
           description: 'Braces para sa bata, kabataan, at matanda — mas pantay na ngipin, akma sa iyong pamumuhay.',
+        },
+        'cosmetic-dentistry': {
+          name: 'Cosmetic Dentistry',
+          description: 'Pagpapaputi ng ngipin, crowns, at iba pang pangangalagang nagpapaganda ng iyong ngiti — iniakma sa kung ano ang bagay sa iyo at nagpapanatiling malusog ng iyong mga ngipin.',
         },
         'oral-surgery': {
           name: 'Oral Surgery',
@@ -324,6 +334,7 @@ export const translations = {
     ],
     about: {
       eyebrow: 'Parte sa Amon nga Klinika',
+      ledBy: 'Ginapanguluhan ni',
       title: 'Pag-atipan sa ngipon nga nakasentro sa', titleAccent: 'imo',
       body: 'Sa sulod sang sobra apat ka tuig, ginabaton sang Arches Dental Clinic ang mga pasyente sa tanan nga edad sa isa ka mainit kag moderno nga lugar diin personal ang kada pagbisita. Ginatingob sang amon team ang matuod nga pag-atipan kag abanse nga teknolohiya, agod nahibaluan mo permi kon ano ang paabuton — kag indi na ka mahadlok sa silya.',
       highlights: [
@@ -349,6 +360,10 @@ export const translations = {
         orthodontics: {
           name: 'Ortodontiks (Braces)',
           description: 'Braces para sa kabataan, tin-edyer, kag adulto — mas tadlong nga ngipon, bagay sa imo kabuhi.',
+        },
+        'cosmetic-dentistry': {
+          name: 'Cosmetic Dentistry',
+          description: 'Pagpaputi sang ngipon, crowns, kag iba pa nga pag-atipan nga nagapaanindot sang imo yuhum — gin-ayon sa kon ano ang nagakaigo sa imo kag nagapabilin nga himsog ang imo mga ngipon.',
         },
         'oral-surgery': {
           name: 'Oral Surgery',
